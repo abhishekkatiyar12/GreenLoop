@@ -5,7 +5,7 @@ import { FaWhatsapp } from "react-icons/fa"; // Importing WhatsApp icon from rea
 
 const ContactUs = () => {
   return (
-    <Box p={6} maxW="1200px" mx="auto" color="green" bg="white">
+    <Box p={6} maxW="1200px" mx="auto" color="black" bg="white">
       {/* Section: Our Address */}
       <Box border="1px solid #ccc" borderRadius="8px" p={6} mb={6} bg="red.50">
         <Heading as="h2" size="lg" color="red.600" mb={3}>
