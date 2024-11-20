@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./BrandScroller.css";
 import axios from "axios";
 import ABHISHEK from "./images/abhishek.jpg"
-import ANUP from "./images/shoefact.jpeg"
-import ABHIJEET from "./images/columbus.png"
-import ANKIT from "./images/shoe.jpg"
+import ANUP from "./images/anup.jpg"
+import ABHIJEET from "./images/abhijeet.jpg"
+import ANKIT from "./images/ankit.jpg"
 
 const brands = [
   { id: 1, name: "ABHISHEK", image: ABHISHEK },
