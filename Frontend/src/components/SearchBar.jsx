@@ -135,7 +135,7 @@ const SearchBar = () => {
         setError(false);
 
         try {
-            const response = await axios.get(`http://localhost:7000/v1/search?q=${term}`);
+            const response = await axios.get(`https://greenloop-nw0w.onrender.com/v1/search?q=${term}`);
             setFilteredResults(response.data.products);
         } catch (error) {
             setError(true);

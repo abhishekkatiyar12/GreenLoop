@@ -4,7 +4,7 @@ import { Box, Button, IconButton, Text, HStack, VStack } from '@chakra-ui/react'
 import { SearchIcon, PhoneIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
-const URL = "http://localhost:7000/api/v1";
+const URL = "https://greenloop-nw0w.onrender.com/api/v1";
 const token = localStorage.getItem('token');
 
 const Header = () => {

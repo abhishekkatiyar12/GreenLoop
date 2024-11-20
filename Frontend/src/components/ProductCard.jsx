@@ -40,7 +40,7 @@ const addToCart = async (product, selectedColor, selectedSize, quantity) => {
   };
 
   try {
-    const response = await axios.post('http://localhost:7000/api/v1/cart/add-to-cart', body, { headers });
+    const response = await axios.post('https://greenloop-nw0w.onrender.com/api/v1/cart/add-to-cart', body, { headers });
     console.log('Response:', response.data);
   } catch (error) {
     console.error('Error adding to cart:', error);
@@ -64,7 +64,7 @@ const ProductCard = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:7000/api/v1/products/${id}`);
+        const response = await axios.get(`https://greenloop-nw0w.onrender.com/api/v1/products/${id}`);
         setProduct(response.data.product);
 
         if (response.data.product.colors && Object.keys(response.data.product.colors).length > 0) {

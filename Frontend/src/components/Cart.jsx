@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Text, Image, HStack, VStack, Divider, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, useToast } from '@chakra-ui/react';
 
-const URL = "http://localhost:7000/api/v1";
+const URL = "https://greenloop-nw0w.onrender.com/api/v1";
 const token = localStorage.getItem('token');
 
 const Cart = () => {

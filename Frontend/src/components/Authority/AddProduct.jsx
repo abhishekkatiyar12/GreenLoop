@@ -106,7 +106,7 @@ const handleColorNameChange = (colorName, newColorName) => {
 
             const token = (localStorage.getItem('token')); // Retrieve the token from local storage
     
-            const response = await axios.post('http://localhost:7000/api/v1/products', productData, {
+            const response = await axios.post('https://greenloop-nw0w.onrender.com/api/v1/products', productData, {
                 headers: {
                     Authorization: `Bearer ${token}`, // Include the token in the request headers
                 },
@@ -176,7 +176,7 @@ const handleColorNameChange = (colorName, newColorName) => {
         });
       
         try {
-          const response = await axios.post('http://localhost:7000/api/v1/upload-img', formData, {
+          const response = await axios.post('https://greenloop-nw0w.onrender.com/api/v1/upload-img', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Button, FormControl, FormLabel, Heading, Input, Select, VStack, ChakraProvider, extendTheme, Flex } from '@chakra-ui/react';
 
 // Define API URL
-const URL = "http://localhost:7000/api/v1";
+const URL = "https://greenloop-nw0w.onrender.com/api/v1";
 
 // Custom theme with red background
 const theme = extendTheme({

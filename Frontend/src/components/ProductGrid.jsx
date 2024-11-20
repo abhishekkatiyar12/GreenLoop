@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Box, Grid, GridItem, Heading, Text, Image, Button, Flex, Spinner, useBreakpointValue } from '@chakra-ui/react';
 
 // Define API URL
-const URL = "http://localhost:7000/api/v1";
+const URL = "https://greenloop-nw0w.onrender.com/api/v1";
 const token = localStorage.getItem('token');
 
 // Custom hook to fetch data

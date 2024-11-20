@@ -14,7 +14,7 @@ const brands = [
   { id: 5, name: "ABHIJEET", image: ABHIJEET },
   // Add more brand objects as needed
 ];
-const URL = 'http://localhost:7000/api/v1/search/brand'; // Adjust the URL if needed
+const URL = 'https://greenloop-nw0w.onrender.com/api/v1/search/brand'; // Adjust the URL if needed
 
 
 const BrandScroller = () => {

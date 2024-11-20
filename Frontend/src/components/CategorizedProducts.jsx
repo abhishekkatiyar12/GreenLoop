@@ -13,7 +13,7 @@ const CategorizedProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:7000/api/v1/search/category/specific/?${category}`)
+        const response = await axios.get(`https://greenloop-nw0w.onrender.com/api/v1/search/category/specific/?${category}`)
           
          
         console.log(response)

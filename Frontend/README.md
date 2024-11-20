@@ -15,7 +15,7 @@ Product Route
 Authentication Route 
 This route is for Sending Authentication Request 
 1. Register : this end point is mode to create new USer into the database and frondend will recieve response as a  cookie.
-URL = "http://localhost:7000/api/v1/auth/register"
+URL = "https://greenloop-nw0w.onrender.com/api/v1/auth/register"
 mathod = "POST"
 JSON body: 
 {
@@ -26,7 +26,7 @@ JSON body:
 }
 
 2. LogIn : This endpoint is to login an already registered user and front end will recieve cookie.
-URL: "http://localhost:7000/api/v1/auth/login"
+URL: "https://greenloop-nw0w.onrender.com/api/v1/auth/login"
 method: "POST"
 JSON body: 
 {
@@ -35,6 +35,6 @@ JSON body:
 }
 
 3. Logout : This logout is assigned to logout the user and remove cookie instantly.
-URL: "http://localhost:7000/api/v1/auth/logout"
+URL: "https://greenloop-nw0w.onrender.com/api/v1/auth/logout"
 method: "GET"
 no body required

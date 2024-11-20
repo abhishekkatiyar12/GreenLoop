@@ -14,7 +14,7 @@ import {
   ChakraProvider,
 } from '@chakra-ui/react';
 
-const URL = "http://localhost:7000/api/v1";
+const URL = "https://greenloop-nw0w.onrender.com/api/v1";
 
 function Login() {
   const [email, setEmail] = useState('');

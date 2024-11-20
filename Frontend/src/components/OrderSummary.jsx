@@ -29,7 +29,7 @@ const OrderSummary = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.patch(
-        `http://localhost:7000/api/v1/orders/${order._id}/cancel`,
+        `https://greenloop-nw0w.onrender.com/api/v1/orders/${order._id}/cancel`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

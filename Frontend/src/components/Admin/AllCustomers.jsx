@@ -10,7 +10,7 @@ function AllCustomers() {
     const fetchCustomers = async () => {
       try {
         const token = localStorage.getItem('token'); // Get the token from localStorage
-        const response = await axios.get('http://localhost:7000/api/v1/users', {
+        const response = await axios.get('https://greenloop-nw0w.onrender.com/api/v1/users', {
           headers: { Authorization: `Bearer ${token}` } // Add token to the request headers
         });
         console.log(response)

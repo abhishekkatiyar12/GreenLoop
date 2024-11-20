@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Category.css';
 
-const URL = 'http://localhost:7000/api/v1/search/category';
+const URL = 'https://greenloop-nw0w.onrender.com/api/v1/search/category';
 const CATEGORIES_PER_PAGE = 10; // Set the limit for categories per page
 
 const CategoryGrid = () => {

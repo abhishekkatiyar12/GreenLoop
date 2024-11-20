@@ -18,7 +18,7 @@ const Orders = () => {
         };
 
         const response = await axios.get(
-          'http://localhost:7000/api/v1/order/history',
+          'https://greenloop-nw0w.onrender.com/api/v1/order/history',
           { headers }
         );
         setOrders(response.data.data || []);
@@ -39,7 +39,7 @@ const Orders = () => {
         'Content-Type': 'application/json',
       };
       await axios.post(
-        `http://localhost:7000/api/v1/order/cancel/${orderId}`,
+        `https://greenloop-nw0w.onrender.com/api/v1/order/cancel/${orderId}`,
         {},
         { headers }
       );

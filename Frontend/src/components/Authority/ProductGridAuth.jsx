@@ -3,8 +3,8 @@ import './ProductGridAuth.css';
 import './ProductCardAuth.css';
 import axios from "axios";
 
-const URL = "http://localhost:7000/api/v1";
-// const URL = "http://localhost:7000/api/v1"
+const URL = "https://greenloop-nw0w.onrender.com/api/v1";
+// const URL = "https://greenloop-nw0w.onrender.com/api/v1"
 const token = localStorage.getItem('token');
 
 const useFetchData = (url, limit = 20) => {
