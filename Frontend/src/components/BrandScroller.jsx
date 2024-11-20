@@ -1,35 +1,49 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./BrandScroller.css";
 import axios from "axios";
-import ABHISHEK from "./images/abhishek.jpg"
-import ANUP from "./images/anup.jpg"
-import ABHIJEET from "./images/abhijeet.jpg"
-import ANKIT from "./images/ankit.jpg"
+import { Box, Image, Grid, Heading, Text, VStack, useToast, Center } from "@chakra-ui/react";
+import ABHISHEK from "./images/abhishek.jpg";
+import ANUP from "./images/anup.jpg";
+import ABHIJEET from "./images/abhijeet.jpg";
+import ANKIT from "./images/ankit.jpg";
+import KUMAR_KASHYAP from "./images/Kashyap.jpg"; // Add image for Kashyap
+import DIVYAM from "./images/divyam.jpg"; // Add image for Divyam
 
 const brands = [
-  { id: 1, name: "ABHISHEK", image: ABHISHEK },
-  { id: 3, name: "ANKIT", image: ANKIT },
-  { id: 4, name: "ANUP",image: ANUP },
-  { id: 5, name: "ABHIJEET", image: ABHIJEET },
-  // Add more brand objects as needed
+  { id: 1, name: "Abhishek", image: ABHISHEK, role: "Full Stack Developer" },
+  { id: 3, name: "Ankit", image: ANKIT, role: "Backend Developer" },
+  { id: 4, name: "Anup", image: ANUP, role: "Frontend Developer" },
+  { id: 5, name: "Abhijeet", image: ABHIJEET, role: "UI/UX Designer" },
 ];
-const URL = 'https://greenloop-nw0w.onrender.com/api/v1/search/brand'; // Adjust the URL if needed
 
+const contributors = [
+  { id: 1, name: "Kumar Kashyap", image: KUMAR_KASHYAP, role: "Contributor" },
+  { id: 2, name: "Divyam", image: DIVYAM, role: "Contributor" },
+];
+
+const URL = "https://greenloop-nw0w.onrender.com/api/v1/search/brand";
 
 const BrandScroller = () => {
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
+  const toast = useToast();
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(URL, {
-          maxBodyLength: Infinity
+          maxBodyLength: Infinity,
         });
-        setCategories(response.data.data); // Assuming response.data contains the categories
+        setCategories(response.data.data);
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
+        toast({
+          title: "Error",
+          description: "Failed to fetch categories.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     };
 
@@ -37,23 +51,84 @@ const BrandScroller = () => {
   }, []);
 
   const handleCategoryClick = (category) => {
-    // Navigate to the category grid for the selected category
     navigate(`/category-grid/brand=${category}`);
   };
 
   return (
-    <div className="brand-cont"> 
-    <h3>WHO WE ARE --</h3>
-    <div className="brand-container">
-      
-      {brands.map((brand) => (
-        <div key={brand.id} className="brand-card" onClick={ () => handleCategoryClick(brand.name.toUpperCase())}>
-          <img src={brand.image} alt={brand.name} />
-          <p>{brand.name}</p>
-        </div>
-      ))}
-    </div>
-    </div>
+    <Box bg="gray.50" p={6} rounded="md" boxShadow="sm">
+      {/* WHO WE ARE Section */}
+      <Heading as="h3" size="lg" textAlign="center" mb={6} color="teal.600">
+        WHO WE ARE
+      </Heading>
+      <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={6}>
+        {brands.map((brand) => (
+          <Box
+            key={brand.id}
+            bg="white"
+            p={4}
+            rounded="lg"
+            boxShadow="md"
+            transition="transform 0.2s"
+            _hover={{ transform: "scale(1.05)", cursor: "pointer" }}
+            onClick={() => handleCategoryClick(brand.name.toUpperCase())}
+          >
+            <VStack>
+              <Image
+                src={brand.image}
+                alt={brand.name}
+                boxSize="120px"
+                borderRadius="full"
+                objectFit="cover"
+                mb={4}
+              />
+              <Text fontWeight="bold" fontSize="lg" color="teal.800">
+                {brand.name}
+              </Text>
+              <Text fontSize="sm" color="gray.600">
+                {brand.role}
+              </Text>
+            </VStack>
+          </Box>
+        ))}
+      </Grid>
+
+      {/* Special Thanks Section */}
+      <Center mt={12}>
+        <Heading as="h4" size="md" mb={6} color="teal.600">
+          Special Thanks to Our Contributors
+        </Heading>
+      </Center>
+      <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={6}>
+        {contributors.map((contributor) => (
+          <Box
+            key={contributor.id}
+            bg="white"
+            p={4}
+            rounded="lg"
+            boxShadow="md"
+            transition="transform 0.2s"
+            _hover={{ transform: "scale(1.05)", cursor: "pointer" }}
+          >
+            <VStack>
+              <Image
+                src={contributor.image}
+                alt={contributor.name}
+                boxSize="120px"
+                borderRadius="full"
+                objectFit="cover"
+                mb={4}
+              />
+              <Text fontWeight="bold" fontSize="lg" color="teal.800">
+                {contributor.name}
+              </Text>
+              <Text fontSize="sm" color="gray.600">
+                {contributor.role}
+              </Text>
+            </VStack>
+          </Box>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 
