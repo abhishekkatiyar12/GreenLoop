@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Category.css';
+import { Box, Button, Grid, Image, Text, SimpleGrid, useBreakpointValue, useToast } from '@chakra-ui/react';
 
 const URL = 'https://greenloop-nw0w.onrender.com/api/v1/search/category';
 const CATEGORIES_PER_PAGE = 10; // Set the limit for categories per page
@@ -12,11 +12,12 @@ const CategoryGrid = () => {
   const [hasMore, setHasMore] = useState(true); // Track if more categories are available
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const toast = useToast();
 
   const fetchCategories = async (page) => {
     if (loading) return;
     setLoading(true);
-    
+
     try {
       const response = await axios.get(URL, {
         params: {
@@ -24,7 +25,7 @@ const CategoryGrid = () => {
           limit: CATEGORIES_PER_PAGE
         }
       });
-      
+
       // Append new categories to existing ones
       setCategories((prevCategories) => [...prevCategories, ...response.data.data]);
 
@@ -32,6 +33,13 @@ const CategoryGrid = () => {
       setHasMore(response.data.data.length === CATEGORIES_PER_PAGE);
     } catch (error) {
       console.error('Error fetching categories:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load categories. Please try again later.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     } finally {
       setLoading(false);
     }
@@ -50,27 +58,56 @@ const CategoryGrid = () => {
   };
 
   return (
-    <>
-      <h3> Explore Your Category --</h3>
-      <div className="category-list">
+    <Box p={4}>
+      <Text fontSize="2xl" fontWeight="semibold" mb={6}>
+        Explore Your Categories
+      </Text>
+      <SimpleGrid columns={{ base: 2, sm: 3, md: 4 }} spacing={4}>
         {categories.map((category, index) => (
-          <div 
-            key={index} 
-            className="category-item" 
+          <Box
+            key={index}
+            borderRadius="md"
+            overflow="hidden"
+            boxShadow="md"
+            transition="all 0.3s"
+            _hover={{ transform: 'scale(1.05)', boxShadow: 'lg' }}
+            cursor="pointer"
             onClick={() => handleCategoryClick(category.category)}
           >
-            <img src={category.image} alt="" style={{ height: '130px' }} />
-            {category.category}
-          </div>
+            <Image
+              src={category.image}
+              alt={category.category}
+              boxSize="200px"
+              objectFit="cover"
+              w="100%"
+              h="130px"
+              borderRadius="md"
+            />
+            <Box p={4} bg="white" textAlign="center">
+              <Text fontSize="lg" fontWeight="semibold" color="gray.800">
+                {category.category}
+              </Text>
+            </Box>
+          </Box>
         ))}
-      </div>
+      </SimpleGrid>
+
       {hasMore && !loading && (
-        <button onClick={handleLoadMore} className="load-more-btn">
+        <Button
+          onClick={handleLoadMore}
+          colorScheme="teal"
+          size="md"
+          variant="outline"
+          mt={6}
+          w="full"
+          _hover={{ bg: 'teal.100' }}
+        >
           Load More
-        </button>
+        </Button>
       )}
-      {loading && <p>Loading...</p>}
-    </>
+
+      {loading && <Text mt={4}>Loading...</Text>}
+    </Box>
   );
 };
 
