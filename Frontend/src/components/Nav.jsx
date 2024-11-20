@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Image, IconButton, Button, Text, useBreakpointValue, Center } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
-
+import {
+  Box,
+  Flex,
+  IconButton,
+  Button,
+  Text,
+  useBreakpointValue,
+  useDisclosure,
+  VStack,
+  Divider,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import RoleBasedComponent from '../RoleBasedComponents';
 
 function Nav() {
-  let token = localStorage.getItem('token');
-  const [isOpen, setIsOpen] = useState(false);
+  const token = localStorage.getItem('token');
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const navigate = useNavigate();
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   const logout = () => {
     const confirm = window.confirm('Are you sure you want to log out?');
@@ -25,92 +30,175 @@ function Nav() {
 
   const buttonVariant = useBreakpointValue({
     base: 'solid',
-    md: 'outline',
+    md: 'ghost',
   });
 
   return (
-    <>
-      <Box p={4} bg="black" color="white">
-        <Flex align="center" justify="space-between" maxW="1200px" mx="auto">
-          <Flex align="center">
-           
-            <Text ml={3} fontSize="xl" fontWeight="bold" className="brand-name">Green Loop</Text>
-          </Flex>
-
-          {/* Hamburger Menu for smaller screens */}
-          <IconButton
-            aria-label="Open menu"
-            icon={<HamburgerIcon />}
-            onClick={toggleMenu}
-            display={{ base: 'block', md: 'none' }}
-            variant="outline"
-            colorScheme="whiteAlpha"
-          />
-          
-          {/* Desktop Menu */}
-          <Flex
-            as="nav"
-            align="center"
-            justify="space-between"
-            display={{ base: 'none', md: 'flex' }}
-            gap={6}
-          >
-            <Link to="/orders">
-              <Button variant="link" colorScheme="whiteAlpha">Orders</Button>
-            </Link>
-           
-
-            {/* Admin Link (Role-based) */}
-            <RoleBasedComponent allowedRoles={['admin']}>
-              <Link to="/register">
-                <Button variant="link" colorScheme="whiteAlpha">Register Users</Button>
-              </Link>
-            </RoleBasedComponent>
-
-            <Link to="/profile">
-              <Button variant="link" colorScheme="whiteAlpha">Profile</Button>
-            </Link>
-
-            {/* Login/Logout Button */}
-            {token ? (
-              <Button variant="outline" colorScheme="red" onClick={logout}>Log-out</Button>
-            ) : (
-              <Button variant={buttonVariant} colorScheme="blue" onClick={() => navigate('/login')}>Log-in</Button>
-            )}
-          </Flex>
+    <Box bg="green.300" color="white" py={4} px={6} shadow="md">
+      <Flex align="center" justify="space-between" maxW="1200px" mx="auto">
+        {/* Logo and Brand Name */}
+        <Flex align="center">
+          <Text fontSize="2xl" fontWeight="bold" ml={2}>
+            Green Loop
+          </Text>
         </Flex>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <Box mt={4} display={{ base: 'block', md: 'none' }}>
-            <Link to="/orders">
-              <Button w="full" variant="ghost" colorScheme="white">Orders</Button>
+        {/* Hamburger Menu (Mobile) */}
+        <IconButton
+          display={{ base: 'block', md: 'none' }}
+          aria-label="Toggle menu"
+          icon={isOpen ? <CloseIcon boxSize={4} /> : <HamburgerIcon boxSize={6} />}
+          onClick={onToggle}
+          variant="solid"
+          bg="whiteAlpha.300"
+          color="white"
+          _hover={{ bg: 'whiteAlpha.400' }}
+        />
+
+        {/* Desktop Navigation */}
+        <Flex
+          as="nav"
+          align="center"
+          gap={4}
+          display={{ base: 'none', md: 'flex' }}
+        >
+          <Link to="/orders">
+            <Button
+              variant="ghost"
+              colorScheme="whiteAlpha"
+              _hover={{ bg: 'whiteAlpha.300' }}
+            >
+              Orders
+            </Button>
+          </Link>
+
+          <RoleBasedComponent allowedRoles={['admin']}>
+            <Link to="/register">
+              <Button
+                variant="ghost"
+                colorScheme="whiteAlpha"
+                _hover={{ bg: 'whiteAlpha.300' }}
+              >
+                Register Users
+              </Button>
             </Link>
-            <Link to="/catalog">
-              <Button w="full" variant="ghost" colorScheme="white">Catalogue</Button>
+          </RoleBasedComponent>
+
+          <Link to="/profile">
+            <Button
+              variant="ghost"
+              colorScheme="whiteAlpha"
+              _hover={{ bg: 'whiteAlpha.300' }}
+            >
+              Profile
+            </Button>
+          </Link>
+
+          {token ? (
+            <Button
+              variant="solid"
+              colorScheme="red"
+              onClick={logout}
+              _hover={{
+                bg: 'red.500',
+                color: 'whiteAlpha.900',
+                transform: 'scale(1.05)',
+                transition: 'all 0.2s',
+              }}
+            >
+              Log-out
+            </Button>
+          ) : (
+            <Button
+              variant={buttonVariant}
+              colorScheme="blue"
+              onClick={() => navigate('/login')}
+            >
+              Log-in
+            </Button>
+          )}
+        </Flex>
+      </Flex>
+
+      {/* Mobile Navigation Menu */}
+      {isOpen && (
+        <Box mt={4} display={{ base: 'block', md: 'none' }} bg="green.400" p={4} borderRadius="md">
+          <VStack spacing={4} align="stretch">
+            <Link to="/orders">
+              <Button
+                w="full"
+                variant="solid"
+                colorScheme="whiteAlpha"
+                bg="whiteAlpha.300"
+                _hover={{ bg: 'whiteAlpha.400' }}
+                onClick={onClose}
+              >
+                Orders
+              </Button>
             </Link>
 
             <RoleBasedComponent allowedRoles={['admin']}>
               <Link to="/register">
-                <Button w="full" variant="ghost" colorScheme="white">Register Users</Button>
+                <Button
+                  w="full"
+                  variant="solid"
+                  colorScheme="whiteAlpha"
+                  bg="whiteAlpha.300"
+                  _hover={{ bg: 'whiteAlpha.400' }}
+                  onClick={onClose}
+                >
+                  Register Users
+                </Button>
               </Link>
             </RoleBasedComponent>
 
             <Link to="/profile">
-              <Button w="full" variant="ghost" colorScheme="white">Profile</Button>
+              <Button
+                w="full"
+                variant="solid"
+                colorScheme="whiteAlpha"
+                bg="whiteAlpha.300"
+                _hover={{ bg: 'whiteAlpha.400' }}
+                onClick={onClose}
+              >
+                Profile
+              </Button>
             </Link>
 
-            {token ? (
-              <Button w="full" variant="outline" colorScheme="red" onClick={logout}>Log-out</Button>
-            ) : (
-              <Button w="full" variant="outline" colorScheme="blue" onClick={() => navigate('/login')}>Log-in</Button>
-            )}
-          </Box>
-        )}
-      </Box>
+            <Divider borderColor="whiteAlpha.500" />
 
-      
-    </>
+            {token ? (
+              <Button
+                w="full"
+                variant="solid"
+                colorScheme="red"
+                onClick={logout}
+                _hover={{
+                  bg: 'red.500',
+                  color: 'whiteAlpha.900',
+                  transform: 'scale(1.05)',
+                  transition: 'all 0.2s',
+                }}
+              >
+                Log-out
+              </Button>
+            ) : (
+              <Button
+                w="full"
+                variant="solid"
+                colorScheme="blue"
+                onClick={() => {
+                  navigate('/login');
+                  onClose();
+                }}
+              >
+                Log-in
+              </Button>
+            )}
+          </VStack>
+        </Box>
+      )}
+    </Box>
   );
 }
 
