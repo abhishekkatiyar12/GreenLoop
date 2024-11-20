@@ -32,4 +32,4 @@ Ensure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/green-loop.git
+   git clone "https://github.com/abhishekkatiyar12/GreenLoop.git"
