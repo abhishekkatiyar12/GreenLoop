@@ -13,7 +13,7 @@ const brands = [
   { id: 1, name: "Abhishek", image: ABHISHEK, role: "Full Stack Developer" },
   { id: 3, name: "Ankit", image: ANKIT, role: "Backend Developer" },
   { id: 4, name: "Anup", image: ANUP, role: "Frontend Developer" },
-  { id: 5, name: "Abhijeet", image: ABHIJEET, role: "UI/UX Designer" },
+  { id: 5, name: "Abhijeet", image: ABHIJEET, role: "Backend Developer" },
 ];
 
 const contributors = [
