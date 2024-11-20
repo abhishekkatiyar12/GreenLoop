@@ -333,10 +333,10 @@ const handleColorNameChange = (colorName, newColorName) => {
                         <label>Item Type:</label>
                         <select name='gender' value={product.gender} onChange={handleChange}>
                             <option value=''>Select Type</option>
-                            <option value='male'>Plastic</option>
-                            <option value='female'>Metal</option>
-                            <option value='unisex'>Glass</option>
-                            <option value='kids'>Ceramic</option>
+                            <option value='Plastic'>Plastic</option>
+                            <option value='Metal'>Metal</option>
+                            <option value='Glass'>Glass</option>
+                            <option value='Ceramic'>Ceramic</option>
                         </select>
                     </div>
                     <div className='form-group'>
