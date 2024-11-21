@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "./Prelogin.css";
-import logo from'./images/logo.png'
+
 import growth from'./images/growth.jpg'
 import online from'./images/online.jpg'
 import connection from'./images/connection.jpg'
@@ -20,7 +20,7 @@ const Prelogin = () => {
     >
       {/* hellllllooooooo */}
       <header className="header"  >
-        <img src={logo} alt="" className='logo' />
+        
         <div style={{display:'flex'}}>
         <Link to="/login" ><button>Login</button></Link>
         <Link to="/register" ><button style={{backgroundColor:'#333'}}>Register</button></Link>

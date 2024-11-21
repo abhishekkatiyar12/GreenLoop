@@ -6,6 +6,7 @@ import {
   IconButton,
   Button,
   Text,
+  Image,
   useBreakpointValue,
   useDisclosure,
   VStack,
@@ -13,6 +14,8 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import RoleBasedComponent from '../RoleBasedComponents';
+
+
 
 function Nav() {
   const token = localStorage.getItem('token');
@@ -36,9 +39,10 @@ function Nav() {
   return (
     <Box bg="green.300" color="white" py={4} px={6} shadow="md">
       <Flex align="center" justify="space-between" maxW="1200px" mx="auto">
-        {/* Logo and Brand Name */}
-        <Flex align="center">
-          <Text fontSize="2xl" fontWeight="bold" ml={2}>
+       
+        <Flex align="center" gap={3}>
+         
+          <Text fontSize="2xl" fontWeight="bold">
             Green Loop
           </Text>
         </Flex>
