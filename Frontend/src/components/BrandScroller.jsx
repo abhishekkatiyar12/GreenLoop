@@ -5,15 +5,15 @@ import { Box, Image, Grid, Heading, Text, VStack, useToast, Center } from "@chak
 import ABHISHEK from "./images/abhishek.jpg";
 import ANUP from "./images/anup.jpg";
 import ABHIJEET from "./images/abhijeet.jpg";
-import ANKIT from "./images/ankit.jpg";
+import ANKIT from "./images/Ankit.jpg";
 import KUMAR_KASHYAP from "./images/Kashyap.jpg"; // Add image for Kashyap
 import DIVYAM from "./images/divyam.jpg"; // Add image for Divyam
 
 const brands = [
   { id: 1, name: "Abhishek", image: ABHISHEK, role: "Full Stack Developer" },
-  { id: 3, name: "Ankit", image: ANKIT, role: "Backend Developer" },
-  { id: 4, name: "Anup", image: ANUP, role: "Frontend Developer" },
-  { id: 5, name: "Abhijeet", image: ABHIJEET, role: "Backend Developer" },
+  { id: 3, name: "Ankit", image: ANKIT, role: "Full Stack Developer" },
+  { id: 4, name: "Anup", image: ANUP, role: "Full Stack Developer" },
+  { id: 5, name: "Abhijeet", image: ABHIJEET, role: "Full Stack Developer" },
 ];
 
 const contributors = [
