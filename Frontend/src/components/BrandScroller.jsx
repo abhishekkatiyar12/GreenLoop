@@ -5,7 +5,7 @@ import { Box, Image, Grid, Heading, Text, VStack, useToast, Center } from "@chak
 import ABHISHEK from "./images/abhishek.jpg";
 import ANUP from "./images/anup.jpg";
 import ABHIJEET from "./images/abhijeet.jpg";
-import ANKIT from "./images/Ankit.jpg";
+import ANKIT from "./images/ankit.jpg";
 import KUMAR_KASHYAP from "./images/Kashyap.jpg"; 
 import DIVYAM from "./images/divyam.jpg"; 
 
