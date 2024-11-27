@@ -6,8 +6,8 @@ import ABHISHEK from "./images/abhishek.jpg";
 import ANUP from "./images/anup.jpg";
 import ABHIJEET from "./images/abhijeet.jpg";
 import ANKIT from "./images/Ankit.jpg";
-import KUMAR_KASHYAP from "./images/Kashyap.jpg"; // Add image for Kashyap
-import DIVYAM from "./images/divyam.jpg"; // Add image for Divyam
+import KUMAR_KASHYAP from "./images/Kashyap.jpg"; 
+import DIVYAM from "./images/divyam.jpg"; 
 
 const brands = [
   { id: 1, name: "Abhishek", image: ABHISHEK, role: "Full Stack Developer" },
