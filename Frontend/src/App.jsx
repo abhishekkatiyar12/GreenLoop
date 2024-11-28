@@ -1,15 +1,15 @@
-import RoleBasedComponent from './RoleBasedComponents';
-import { Link } from 'react-router-dom';
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Scroll from './components/Scroll';
-import ProductGrid from './components/ProductGrid';
-import CategoryGrid from './components/Category';
-import BrandScroller from './components/BrandScroller';
-import './components/Style.css';
-import { ChakraProvider, Button, Box, Icon } from '@chakra-ui/react';
-import { FaPlus, FaTools } from 'react-icons/fa';
-import React from 'react';
+import { Box, Button, ChakraProvider, Icon } from "@chakra-ui/react";
+import React from "react";
+import { FaPlus, FaTools } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import BrandScroller from "./components/BrandScroller";
+import CategoryGrid from "./components/Category";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import ProductGrid from "./components/ProductGrid";
+import Scroll from "./components/Scroll";
+import "./components/Style.css";
+import RoleBasedComponent from "./RoleBasedComponents";
 
 function App() {
   return (
@@ -26,28 +26,28 @@ function App() {
         gap="10px"
         zIndex="1000"
       >
-        <RoleBasedComponent allowedRoles={['admin', 'employee']}>
+        <RoleBasedComponent allowedRoles={["admin", "employee"]}>
           <Link to="/addproduct">
             <Button
               leftIcon={<Icon as={FaPlus} />}
               colorScheme="teal"
               size="lg"
               variant="solid"
-              _hover={{ bg: 'teal.600' }}
+              _hover={{ bg: "teal.600" }}
               boxShadow="lg"
             >
               Add Products
             </Button>
           </Link>
         </RoleBasedComponent>
-        <RoleBasedComponent allowedRoles={['admin']}>
+        <RoleBasedComponent allowedRoles={["admin"]}>
           <Link to="/admin-dashboard">
             <Button
               leftIcon={<Icon as={FaTools} />}
               colorScheme="purple"
               size="lg"
               variant="solid"
-              _hover={{ bg: 'purple.600' }}
+              _hover={{ bg: "purple.600" }}
               boxShadow="lg"
             >
               Admin Tools
@@ -55,9 +55,9 @@ function App() {
           </Link>
         </RoleBasedComponent>
       </Box>
-      <BrandScroller />
       <CategoryGrid />
       <ProductGrid />
+      <BrandScroller />
     </ChakraProvider>
   );
 }
