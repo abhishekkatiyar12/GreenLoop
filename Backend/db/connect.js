@@ -10,4 +10,7 @@ const connectDB = (url) => {
 };
 
 module.exports = connectDB;
+
+// mongoose error
+
  
