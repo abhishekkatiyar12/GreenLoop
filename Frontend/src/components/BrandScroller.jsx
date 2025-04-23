@@ -12,19 +12,19 @@ import Gulshan from "./images/Gulshan.jpg";
 import Divakar from "./images/Divakar.jpg";
 
 const brands = [
-  { id: 1, name: "Divyam", image: DIVYAM, role: "Full Stack Developer" },
-  { id: 3, name: "Divakar", image: Divakar, role: "Full Stack Developer" },
-  { id: 4, name: "Gulshan", image: Gulshan, role: "Full Stack Developer" },
-  // { id: 1, name: "Abhishek", image: ABHISHEK, role: "Full Stack Developer" },
-  // { id: 3, name: "Ankit", image: ANKIT, role: "Full Stack Developer" },
-  // { id: 4, name: "Anup", image: ANUP, role: "Full Stack Developer" },
-  // { id: 5, name: "Abhijeet", image: ABHIJEET, role: "Full Stack Developer" },
+  // { id: 1, name: "Divyam", image: DIVYAM, role: "Full Stack Developer" },
+  // { id: 3, name: "Divakar", image: Divakar, role: "Full Stack Developer" },
+  // { id: 4, name: "Gulshan", image: Gulshan, role: "Full Stack Developer" },
+   { id: 1, name: "Abhishek", image: ABHISHEK, role: "Full Stack Developer" },
+   { id: 2, name: "Ankit", image: ANKIT, role: "Full Stack Developer" },
+   { id: 3, name: "Anup", image: ANUP, role: "Full Stack Developer" },
+   { id: 4, name: "Abhijeet", image: ABHIJEET, role: "Full Stack Developer" },
 ];
 
-// const contributors = [
-//   { id: 1, name: "Kumar Kashyap", image: KUMAR_KASHYAP, role: "Contributor" },
-//   { id: 2, name: "Divyam", image: DIVYAM, role: "Contributor" },
-// ];
+ const contributors = [
+   { id: 1, name: "Kumar Kashyap", image: KUMAR_KASHYAP, role: "Contributor" },
+   { id: 2, name: "Divyam", image: DIVYAM, role: "Contributor" },
+ ];
 
 const URL = "https://greenloop-nw0w.onrender.com/api/v1/search/brand";
 
@@ -98,12 +98,12 @@ const BrandScroller = () => {
       </Grid>
 
       {/* Special Thanks Section */}
-      {/* <Center mt={12}> */}
-        {/* <Heading as="h4" size="md" mb={6} color="teal.600"> */}
-          {/* Special Thanks to Our Contributors */}
-        {/* </Heading> */}
-      {/* </Center> */}
-      {/* <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={6}>
+      <Center mt={12}>
+         <Heading as="h4" size="md" mb={6} color="teal.600"> 
+           Special Thanks to Our Contributors
+         </Heading> 
+       </Center>
+       <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={6}>
         {contributors.map((contributor) => (
           <Box
             key={contributor.id}
@@ -132,7 +132,7 @@ const BrandScroller = () => {
             </VStack>
           </Box>
         ))}
-      </Grid> */}
+      </Grid> 
     </Box>
   );
 };
